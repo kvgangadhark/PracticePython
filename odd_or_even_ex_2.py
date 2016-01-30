@@ -2,6 +2,9 @@
 
 number = int(input("enter a numner:"))
 if number %2 == 0:
-    print ("even")
+    if number %4 == 0:
+        print ("divided by 4")
+    else:
+        print ("even")
 else:
     print ("odd")
