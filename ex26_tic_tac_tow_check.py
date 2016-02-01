@@ -1,5 +1,4 @@
 #write a function which takes a list of 3 lists each with 3 numbers as input and checks if it has a winner.
-
 def game_checker(l):
     for i in range(0,3):
         if l[i][0] == l[i][1] and l[i][2] == l[i][0]:
@@ -16,9 +15,7 @@ def game_checker(l):
 def update_board(l,x,y,c):
     l[x][y]=c
 
-
 def draw_board(l):
-
     print (" --- --- ---")
     print ("| "+str(l[0][0])+" | "+str(l[0][1])+" | "+str(l[0][2])+" |")
     print (" --- --- ---")
@@ -34,23 +31,18 @@ def swap_player(player):
         return 1
 
 l = [[0,0,0],[0,0,0],[0,0,0]]
-draw_board(l)
-ret = 0
+winner = 0
 player = 1
-while (ret == 0):
+while (winner == 0):
     x = int(input(str(player)+" enter the x coordinate: "))
-    if x > 3:
-        print("wrong input lost your chance")
+    y = int(input(str(player)+" enter the y coordinate: "))
+    if x > 3 or y > 3 or l[x][y] != 0:
+        print("lost your chance!")
         player = swap_player(player)
         continue
-    y = int(input(str(player)+" enter the y coordinate: "))
-    if y > 3:
-        print("wrong input lost your chance")
-        continue
+        
     update_board(l,x,y,player)
     draw_board(l)
     player = swap_player(player)
-    ret = game_checker(l)
-
-print(str(ret)+"is the winner!")
-
+    winner = game_checker(l)
+print(str(winner)+"is the winner!")
