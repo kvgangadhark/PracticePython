@@ -1,21 +1,18 @@
 # Reverse of the guessing game we have written earier.
 
-guess = 50
+start = 1
+end = 100
 found = False
-comp = guess
 while found != True:
-    if guess == 0 or guess == 100:
-        print("error closing")
-        found = True
+    guess = int((start + end ) / 2)
     print (guess)
-    comp =int(guess/2)
     inp = int(input("enter 1: too low, 2: too high, 3: correct!"))
     if inp == 3:
         print ("bye!")
         found = True
     elif inp == 1:
-        guess += comp
+        start = guess
+        guess = min1(end, guess + comp)
     else:
-        guess -= comp
-
-
+        end = guess
+        guess = max1(start, guess - comp)
